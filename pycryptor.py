@@ -102,8 +102,8 @@ flags_arg = flags()
 
 # Initial process
 
-after_str = ""
 def main():
+    after_str = ""
     if flags_arg[1] == "n":
         for char in flags_arg[0]:
             if char.isupper() == True:

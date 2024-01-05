@@ -103,25 +103,29 @@ flags_arg = flags()
 # Initial process
 
 after_str = ""
-if flags_arg[1] == "n":
-    for char in flags_arg[0]:
-        if char.isupper() == True:
-            after_str += uppercase(NRunes[f'{char.lower()}'])
-        elif char.isdigit() == True:
-            after_str += char
-        else:
-             try:
-                 after_str += NRunes[f'{char}']
-             except:
-                 after_str += "uc"
-elif flags_arg[1] == "morse":
-    for char in flags_arg[0]:
-        if char.isupper() == True:
-            after_str += MorseRunes[f'{char.lower()}']
-        else:
-            try:
-                after_str += MorseRunes[f'{char}']
-            except:
-                after_str += "uc"
+def main():
+    if flags_arg[1] == "n":
+        for char in flags_arg[0]:
+            if char.isupper() == True:
+                after_str += uppercase(NRunes[f'{char.lower()}'])
+            elif char.isdigit() == True:
+                after_str += char
+            else:
+                 try:
+                     after_str += NRunes[f'{char}']
+                 except:
+                     after_str += "uc"
+    elif flags_arg[1] == "morse":
+        for char in flags_arg[0]:
+            if char.isupper() == True:
+                after_str += MorseRunes[f'{char.lower()}']
+            else:
+                try:
+                    after_str += MorseRunes[f'{char}']
+                except:
+                    after_str += "uc"
+    
+    print(f'Encrypted message: "{after_str}"\n ')
 
-print(f'Encrypted message: "{after_str}"\n ')
+if __name__ == "__main__":
+    main()

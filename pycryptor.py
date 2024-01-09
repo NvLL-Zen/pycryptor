@@ -1,6 +1,6 @@
 import sys
 print("")
-NRunes = {"a":"n1", "g":"n2", "m":"n3", "s":"n4", "y":"n5",
+NEnc = {"a":"n1", "g":"n2", "m":"n3", "s":"n4", "y":"n5",
          "b":"l1", "h":"l2", "n":"l3", "t":"l4",
          "f":"c1", "l":"c2", "r":"c3", "x":"c4",
          "c":"d1", "i":"d2", "o":"d3",
@@ -10,7 +10,7 @@ NRunes = {"a":"n1", "g":"n2", "m":"n3", "s":"n4", "y":"n5",
          " ":"g5","/":"g6",",":"g7",".":"g8","\\":"g9", "!":"g10"
          }
 
-MorseRunes = {
+MorseEnc = {
     "a":".-", "g":"--.", "m":"--", "s":"...", "y":"-.--",
     "b":"-...", "h":"....", "n":"-.", "t":"-",
     "f":"..-.", "l":".-..", "r":".-.", "x":"-..-",
@@ -22,6 +22,8 @@ MorseRunes = {
     "6":"-....", "7":"--...", "8":"---..", "9":"----.", "0": "-----",
     " ":" / ","/":"/",",":",",".":".","\\":"\\", "!":"!"
 }
+
+MorseDEnc = {}
 
 
 def uppercase(case):
@@ -107,21 +109,30 @@ def main():
     if flags_arg[1] == "n":
         for char in flags_arg[0]:
             if char.isupper() == True:
-                after_str += uppercase(NRunes[f'{char.lower()}'])
+                after_str += uppercase(NEnc[f'{char.lower()}'])
             elif char.isdigit() == True:
                 after_str += char
             else:
                  try:
-                     after_str += NRunes[f'{char}']
+                     after_str += NEnc[f'{char}']
                  except:
                      after_str += "uc"
     elif flags_arg[1] == "morse":
         for char in flags_arg[0]:
             if char.isupper() == True:
-                after_str += MorseRunes[f'{char.lower()}']
+                after_str += MorseEnc[f'{char.lower()}']
             else:
                 try:
-                    after_str += MorseRunes[f'{char}']
+                    after_str += MorseEnc[f'{char}']
+                except:
+                    after_str += "uc"
+    elif flags_arg[1] == "revmorse":
+        for char in flags_arg[0]:
+            if char.isupper() == True:
+                after_str += MorseEnc[f'{char.lower()}']
+            else:
+                try:
+                    after_str += MorseEnc[f'{char}']
                 except:
                     after_str += "uc"
     
